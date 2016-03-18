@@ -14,4 +14,22 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string-array name="plants_to_grow">
+        <item>Herbs</item>
+        <item>Lettuce/Salad Greens</item>
+        <item>Leeks</item>
+        <item>Onion</item>
+        <item>Spinach</item>
+        <item>Arugula</item>
+    </string-array>
+    <string-array name="plants_to_start">
+        <item>Broccoli</item>
+        <item>Cauliflower</item>
+        <item>Kohlrabi</item>
+        <item>Tomatoes</item>
+        <item>Cabbage</item>
+        <item>Eggplant</item>
+        <item>Peppers</item>
+    </string-array>
 </resources>

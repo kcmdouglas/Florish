@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == mSeasonalButton) {
             String location = mLocationEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, SeasonalActivity.class);
+            intent.putExtra("location", location);
             startActivity(intent);
         }
     }
