@@ -32,7 +32,7 @@
         <item>Eggplant</item>
         <item>Peppers</item>
     </string-array>
-    <string name = "open_weather_map_API_key">
+    <string name="open_weather_map_API_key">
         cf92d9fbcc2eebdcaab0bf6fedff8e48
     </string>
 </resources>

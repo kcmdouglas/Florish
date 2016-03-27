@@ -66,10 +66,10 @@ public class SeasonalActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mCurrentWeather = currentWeatherService.processCurrentResults(response);
 
-                ResultsActivity.this.runOnUiThread(new Runnable() {
+                SeasonalActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Picasso.with(ResultsActivity.this)
+                        Picasso.with(SeasonalActivity.this)
                                 .load(mCurrentWeather.getImageUrl())
                                 .into(mCurrentWeatherImageView);
                         mCurrentDescription.setText(mCurrentWeather.getLongDescription());

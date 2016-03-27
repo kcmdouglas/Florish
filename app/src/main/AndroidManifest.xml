@@ -23,7 +23,8 @@
         <activity
             android:name=".ui.UserLoginActivity"
             android:label="@string/title_activity_user_login" />
-        <activity android:name=".ui.SeasonalActivity"></activity>
+        <activity android:name=".ui.SeasonalActivity" />
+        <activity android:name=".ui.UserPageActivity"></activity>
     </application>
 
 </manifest>
