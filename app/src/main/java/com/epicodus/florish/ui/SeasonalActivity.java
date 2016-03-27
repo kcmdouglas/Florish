@@ -9,14 +9,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.florish.R;
+import com.epicodus.florish.models.CurrentWeather;
+import com.epicodus.florish.service.OpenWeatherMapService;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class SeasonalActivity extends AppCompatActivity {
     @Bind(R.id.seasonalLocation) TextView mSeasonalLocation;
     @Bind(R.id.starterListView) ListView mStarterListView;
     @Bind(R.id.plantDirectlyListView) ListView mPlantDirectlyListView;
+    private CurrentWeather mCurrentWeather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,9 @@ public class SeasonalActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         mSeasonalLocation.setText("Here's what's in season near: " + location);
 
+        getCurrentWeather(location);
+
+
         Resources res = getResources();
         String[] starterPlants = res.getStringArray(R.array.plants_to_start);
         String[] plantingPlants = res.getStringArray(R.array.plants_to_grow);
@@ -38,6 +50,33 @@ public class SeasonalActivity extends AppCompatActivity {
         ArrayAdapter plantingAdapater = new ArrayAdapter(this, android.R.layout.simple_list_item_1, plantingPlants);
         mPlantDirectlyListView.setAdapter(plantingAdapater);
 
+    }
 
+
+    private void getCurrentWeather(String location) {
+        final OpenWeatherMapService currentWeatherService = new OpenWeatherMapService(this);
+
+        currentWeatherService.findCurrentWeather(location, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                mCurrentWeather = currentWeatherService.processCurrentResults(response);
+
+                ResultsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Picasso.with(ResultsActivity.this)
+                                .load(mCurrentWeather.getImageUrl())
+                                .into(mCurrentWeatherImageView);
+                        mCurrentDescription.setText(mCurrentWeather.getLongDescription());
+                        mCurrentTemp.setText(mCurrentWeather.getCurrentTemp() + "°");
+                    }
+                });
+            }
+        });
     }
 }

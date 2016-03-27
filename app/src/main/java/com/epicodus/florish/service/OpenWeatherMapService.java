@@ -17,7 +17,7 @@ public class OpenWeatherMapService {
     private Context mContext;
 
 
-    public CurrentWeatherService(Context context) {
+    public OpenWeatherMapService(Context context) {
         this.mContext = context;
     }
 
