@@ -37,7 +37,7 @@ public class SeasonalActivity extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         mSeasonalLocation.setText("Here's what's in season near: " + location);
 
-        getCurrentWeather(location);
+
 
 
         Resources res = getResources();
@@ -53,30 +53,4 @@ public class SeasonalActivity extends AppCompatActivity {
     }
 
 
-    private void getCurrentWeather(String location) {
-        final OpenWeatherMapService currentWeatherService = new OpenWeatherMapService(this);
-
-        currentWeatherService.findCurrentWeather(location, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) {
-                mCurrentWeather = currentWeatherService.processCurrentResults(response);
-
-                SeasonalActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Picasso.with(SeasonalActivity.this)
-                                .load(mCurrentWeather.getImageUrl())
-                                .into(mCurrentWeatherImageView);
-                        mCurrentDescription.setText(mCurrentWeather.getLongDescription());
-                        mCurrentTemp.setText(mCurrentWeather.getCurrentTemp() + "°");
-                    }
-                });
-            }
-        });
-    }
 }
