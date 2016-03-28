@@ -46,13 +46,13 @@ public class OpenWeatherMapService {
         call.enqueue(callback);
     }
 
-    public void findCurrentWeather(String city, Callback callback) {
+    public void findCurrentWeather(String zip, Callback callback) {
         String appid = mContext.getString(R.string.open_weather_map_API_key);
 
         OkHttpClient client = new OkHttpClient.Builder().build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse("http://api.openweathermap.org/data/2.5/weather?&units=imperial&APPID=" + appid).newBuilder();
-        urlBuilder.addQueryParameter("q", city);
+        urlBuilder.addQueryParameter("zip", zip);
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()

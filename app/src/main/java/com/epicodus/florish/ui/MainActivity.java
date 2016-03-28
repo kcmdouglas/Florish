@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.loginButton) Button mLoginButton;
     @Bind(R.id.seasonalButton) Button mSeasonalButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
+    @Bind(R.id.user_page_button) Button mUserPageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mLoginButton.setOnClickListener(this);
         mSeasonalButton.setOnClickListener(this);
+        mUserPageButton.setOnClickListener(this);
+
 
     }
 
@@ -34,8 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, UserLoginActivity.class);
             startActivity(intent);
         } else if (v == mSeasonalButton) {
-            String location = mLocationEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, SeasonalActivity.class);
+            startActivity(intent);
+        } else if (v == mUserPageButton) {
+            String location = mLocationEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, UserPageActivity.class);
             intent.putExtra("location", location);
             startActivity(intent);
         }

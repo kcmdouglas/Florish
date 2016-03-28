@@ -30,7 +30,7 @@ public class SeasonalActivity extends AppCompatActivity {
     @Bind(R.id.seasonalLocation) TextView mSeasonalLocation;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private ArrayList<Plant> starterPlants;
+    public ArrayList<Plant> starterPlants = new ArrayList<>();
 
 
     @Override

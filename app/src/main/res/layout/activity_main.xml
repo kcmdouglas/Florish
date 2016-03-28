@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/app_name"
-        android:id="@+id/textView"
+        android:id="@+id/title_text_view"
         android:textColor="@color/colorPrimaryText"
         android:textSize="80sp"
         android:layout_marginTop="62dp"
@@ -42,29 +42,9 @@
         android:text="Weather Info will be here in the future!"
         android:id="@+id/textView2"
         android:textColor="@color/colorPrimary"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/title_text_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login | Register"
-        android:id="@+id/loginButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="See What&apos;s In Season"
-        android:id="@+id/seasonalButton"
-        android:layout_above="@+id/loginButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="65dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -75,7 +55,35 @@
         android:hint="Enter Your Zipcode"
         android:textColorHint="#191818"
         android:textAlignment="center"
-        android:layout_above="@+id/seasonalButton"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Page"
+        android:id="@+id/user_page_button"
+        android:layout_below="@+id/locationEditText"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See What&apos;s In Season"
+        android:id="@+id/seasonalButton"
+        android:layout_below="@+id/user_page_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login | Register"
+        android:id="@+id/loginButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp" />
 
 </RelativeLayout>

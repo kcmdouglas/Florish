@@ -24,7 +24,7 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/current_weather_image"
+        android:id="@+id/current_weather_image_view"
         android:layout_marginTop="34dp"
         android:layout_below="@+id/welcome_text_view"
         android:layout_centerHorizontal="true" />
@@ -35,7 +35,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Right now, it looks like the weather is a bit..."
         android:id="@+id/current_weather_text_view"
-        android:layout_below="@+id/current_weather_image"
+        android:layout_below="@+id/current_weather_image_view"
         android:layout_centerHorizontal="true"
         android:textSize="10dp" />
 
@@ -80,6 +80,6 @@
         app:elevation="4dp"
         app:fabSize="mini"
         android:layout_below="@+id/starter_scroll_view"
-        android:layout_alignLeft="@+id/current_weather_image"
-        android:layout_alignStart="@+id/current_weather_image" />
+        android:layout_alignLeft="@+id/current_weather_image_view"
+        android:layout_alignStart="@+id/current_weather_image_view" />
 </RelativeLayout>
