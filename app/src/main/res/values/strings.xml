@@ -35,4 +35,7 @@
     <string name="open_weather_map_API_key">
         cf92d9fbcc2eebdcaab0bf6fedff8e48
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

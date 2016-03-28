@@ -26,7 +26,8 @@
             android:name=".ui.UserLoginActivity"
             android:label="@string/title_activity_user_login" />
         <activity android:name=".ui.SeasonalActivity" />
-        <activity android:name=".ui.UserPageActivity"></activity>
+        <activity android:name=".ui.UserPageActivity" />
+        <activity android:name=".ui.PlantDetailActivity"></activity>
     </application>
 
 </manifest>
