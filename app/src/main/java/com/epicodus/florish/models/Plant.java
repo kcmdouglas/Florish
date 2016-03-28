@@ -11,16 +11,18 @@ public class Plant {
     public String mCategory;
     public String mPlantingSpan;
     public String mDescription;
+    public String mImageUrl;
 
     public Plant() {
 
     }
 
-    public Plant(String name, String category, String plantingSpan, String description) {
+    public Plant(String name, String category, String plantingSpan, String description, String imageUrl) {
         mName = name;
         mCategory = category;
         mPlantingSpan = plantingSpan;
         mDescription = description;
+        mImageUrl = imageUrl;
     }
 
     public String getName() {
@@ -38,4 +40,6 @@ public class Plant {
     public String getDescription() {
         return mDescription;
     }
+
+    public String getImageUrl() { return mImageUrl; }
 }
