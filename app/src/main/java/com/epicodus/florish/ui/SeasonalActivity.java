@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.florish.R;
+import com.epicodus.florish.adapters.PlantListAdapter;
 import com.epicodus.florish.models.CurrentWeather;
 import com.epicodus.florish.models.Plant;
 import com.epicodus.florish.service.OpenWeatherMapService;
@@ -25,8 +28,10 @@ import okhttp3.Response;
 
 public class SeasonalActivity extends AppCompatActivity {
     @Bind(R.id.seasonalLocation) TextView mSeasonalLocation;
-    @Bind(R.id.starterListView) ListView mStarterListView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
     private ArrayList<Plant> starterPlants;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +47,17 @@ public class SeasonalActivity extends AppCompatActivity {
 
         Plant Rosemary = new Plant("Rosemary", "Herb", "Start seeds indoors late March, Plant April through June, ","Rosemary is a perennial evergreen shrub with blue flowers. It is a pungent and distinctive plant with a sweet, resinous flavor. It is used for poultry, lamb, stews, and soups.", "https://pixabay.com/static/uploads/photo/2015/11/18/17/07/rosemary-1049531_960_720.jpg");
 
+        starterPlants.add(Kohlrabi);
+        starterPlants.add(Broccoli);
+        starterPlants.add(Rosemary);
 
-        Resources res = getResources();
-        String[] starterPlants = res.getStringArray(R.array.plants_to_start);
-        String[] plantingPlants = res.getStringArray(R.array.plants_to_grow);
 
-        ArrayAdapter starterAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, starterPlants);
-        mStarterListView.setAdapter(starterAdapter);
+        mAdapter = new PlantListAdapter(getApplicationContext(), starterPlants);
+        mRecyclerView.setAdapter(mAdapter);
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(SeasonalActivity.this);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setHasFixedSize(true);
 
     }
 
