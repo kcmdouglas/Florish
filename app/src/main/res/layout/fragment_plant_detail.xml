@@ -62,9 +62,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            tex
-
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Plant description goes right about here..."
+                android:id="@+id/descriptionTextView"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="46dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/colorGoldAccent"
+                android:textSize="17sp" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,18 +83,6 @@
                 android:background="@color/colorAccent"
                 android:textSize="15sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Plant description goes right about here..."
-                android:id="@+id/textView"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="46dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textColor="@color/colorGoldAccent"
-                android:textSize="17sp" />
         </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLoginButton.setOnClickListener(this);
         mSeasonalButton.setOnClickListener(this);
         mUserPageButton.setOnClickListener(this);
-
-
     }
 
     @Override

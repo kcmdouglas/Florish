@@ -1,6 +1,7 @@
 package com.epicodus.florish.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 
 import com.epicodus.florish.R;
 import com.epicodus.florish.models.Plant;
+import com.epicodus.florish.ui.PlantDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -50,16 +54,26 @@ public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.Plan
         @Bind(R.id.categoryTextView) TextView mCategoryTextView;
         private Context mContext;
 
-
-        public PlantViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            mContext = itemView.getContext();
-        }
-
         public void bindPlant(Plant plant) {
             mNameTextView.setText(plant.getName());
             mCategoryTextView.setText(plant.getCategory());
+        }
+
+        public PlantViewHolder(View itemView) {
+            super(itemView);
+            mContext = itemView.getContext();
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    int itemPosition = getLayoutPosition();
+                    Intent intent = new Intent(mContext, PlantDetailActivity.class);
+                    intent.putExtra("position", itemPosition + "");
+                    intent.putExtra("plants", Parcels.wrap(mPlants));
+                    mContext.startActivity(intent);
+                }
+            });
         }
     }
 }
