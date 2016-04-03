@@ -1,0 +1,75 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.epicodus.florish.ui.UserCreationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/fragment_greeting"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimaryText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="There&apos;s just a few things to cover before you get started..."
+            android:id="@+id/textView4"
+            android:layout_marginTop="25dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/usernameEditText"
+            android:layout_below="@+id/textView4"
+            android:layout_centerHorizontal="true"
+            android:hint="What&apos;s your name?"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/zipcodeEditText"
+            android:layout_below="@+id/usernameEditText"
+            android:layout_alignRight="@+id/usernameEditText"
+            android:layout_alignEnd="@+id/usernameEditText"
+            android:layout_alignLeft="@+id/usernameEditText"
+            android:layout_alignStart="@+id/usernameEditText"
+            android:layout_marginTop="15dp"
+            android:hint="Zip Code" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/submitButton"
+            android:background="@color/colorPrimaryText"
+            android:textColor="@color/colorGoldAccent"
+            android:layout_below="@+id/zipcodeEditText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp" />
+    </RelativeLayout>
+</FrameLayout>
