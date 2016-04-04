@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by Kassidy on 3/27/2016.
  */
 
-public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.PlantViewHolder> {
+public class PlantListAdapter extends RecyclerView.Adapter<PlantViewHolder> {
     private ArrayList<Plant> mPlants = new ArrayList<>();
     private Context mContext;
 
@@ -33,14 +33,14 @@ public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.Plan
     }
 
     @Override
-    public PlantListAdapter.PlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.plant_list_item, parent, false);
         PlantViewHolder viewHolder = new PlantViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(PlantListAdapter.PlantViewHolder holder, int position) {
+    public void onBindViewHolder(PlantViewHolder holder, int position) {
         holder.bindPlant(mPlants.get(position));
     }
 
@@ -49,32 +49,5 @@ public class PlantListAdapter extends RecyclerView.Adapter<PlantListAdapter.Plan
         return mPlants.size();
     }
 
-    public class PlantViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.plantNameTextView) TextView mNameTextView;
-        @Bind(R.id.categoryTextView) TextView mCategoryTextView;
-        private Context mContext;
-
-        public void bindPlant(Plant plant) {
-            mNameTextView.setText(plant.getName());
-            mCategoryTextView.setText(plant.getCategory());
-        }
-
-        public PlantViewHolder(View itemView) {
-            super(itemView);
-            mContext = itemView.getContext();
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    int itemPosition = getLayoutPosition();
-                    Intent intent = new Intent(mContext, PlantDetailActivity.class);
-                    intent.putExtra("position", itemPosition + "");
-                    intent.putExtra("plants", Parcels.wrap(mPlants));
-                    mContext.startActivity(intent);
-                }
-            });
-        }
-    }
 }
 
