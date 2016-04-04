@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.epicodus.florish.FlorishApplication;
 import com.epicodus.florish.R;
 import com.epicodus.florish.models.Plant;
 import com.epicodus.florish.ui.PlantDetailActivity;
@@ -29,10 +30,12 @@ public class PlantViewHolder extends RecyclerView.ViewHolder {
     private Context mContext;
     private Firebase mFirebaseRef;
 
-    public PlantViewHolder(View itemView) {
+    public PlantViewHolder(View itemView, ArrayList<Plant> plants) {
         super(itemView);
         mContext = itemView.getContext();
         ButterKnife.bind(this, itemView);
+        mPlants = plants;
+
         itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -44,6 +47,8 @@ public class PlantViewHolder extends RecyclerView.ViewHolder {
                 mContext.startActivity(intent);
             }
         });
+
+        mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
     }
 
     public void bindPlant(Plant plant) {
