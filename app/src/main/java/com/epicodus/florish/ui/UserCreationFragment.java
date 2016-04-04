@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class UserCreationFragment extends DialogFragment implements View.OnClick
         mSharedPreferences = this.getContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         mEditor = mSharedPreferences.edit();
 
+        mSubmitButton.setOnClickListener(this);
         return view;
     }
 
@@ -74,23 +76,22 @@ public class UserCreationFragment extends DialogFragment implements View.OnClick
         if (v == mSubmitButton) {
             String name = mUsernameEditText.getText().toString();
             String location = mZipcodeEditText.getText().toString();
-            addToSharedPreferences(location);
-            addToSharedPreferences(name);
-
+            addToSharedPreferences(name, location);
             createUser(name, mUserId);
-
             dismiss();
-
         }
 
     }
 
-    private void addToSharedPreferences(String username) {
-        mEditor.putString("username", username).commit();
+    private void addToSharedPreferences(String name, String location) {
+        mEditor.putString("name", name).commit();
+        mEditor.putString("location", location).commit();
     }
 
     private void createUser(String name, String userId) {
         User user = new User(name, userId);
         mFirebaseRef.child("users/" + userId).push().setValue(user);
     }
+
+
 }

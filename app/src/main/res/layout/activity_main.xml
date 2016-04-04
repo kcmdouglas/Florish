@@ -30,7 +30,6 @@
         android:id="@+id/title_text_view"
         android:textColor="@color/colorPrimaryText"
         android:textSize="80sp"
-        android:layout_marginTop="62dp"
         android:textColorHighlight="#fefefe"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -43,7 +42,8 @@
         android:id="@+id/userGreetingTextView"
         android:textColor="@color/colorPrimary"
         android:layout_below="@+id/title_text_view"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
