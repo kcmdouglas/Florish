@@ -1,6 +1,8 @@
 package com.epicodus.florish.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +35,8 @@ public class UserPageActivity extends AppCompatActivity implements View.OnClickL
     @Bind(R.id.current_weather_text_view) TextView mCurrentWeatherTextView;
     @Bind(R.id.current_temperature_text_view) TextView mCurrentTemperatureTextView;
     @Bind(R.id.share_button) FloatingActionButton mShareButton;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,10 @@ public class UserPageActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_user_page);
         ButterKnife.bind(this);
 
-        Intent intent = getIntent();
-        String location = intent.getStringExtra("location");
+        mSharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        mEditor = mSharedPreferences.edit();
+
+        String location = mSharedPreferences.getString("location", null);
         getCurrentWeather(location);
 
         mShareButton.setOnClickListener(this);
