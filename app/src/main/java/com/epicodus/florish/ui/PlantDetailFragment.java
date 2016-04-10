@@ -7,11 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.epicodus.florish.FlorishApplication;
 import com.epicodus.florish.R;
 import com.epicodus.florish.models.Plant;
+import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -25,7 +28,8 @@ public class PlantDetailFragment extends Fragment {
     @Bind(R.id.plantCategoryTextView) TextView mCategoriesLabel;
     @Bind(R.id.plantPlantingSpanTextView) TextView mPlantingLabel;
     @Bind(R.id.descriptionTextView) TextView mDescription;
-    @Bind(R.id.savePlantButton) TextView mSavePlantButton;
+    @Bind(R.id.savePlantButton) Button mSavePlantButton;
+    private Firebase mFirebaseRef;
 
     private Plant mPlant;
 
@@ -41,6 +45,15 @@ public class PlantDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPlant = Parcels.unwrap(getArguments().getParcelable("plant"));
+
+        mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
+
+        mSavePlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

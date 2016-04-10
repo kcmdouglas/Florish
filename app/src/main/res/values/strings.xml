@@ -39,4 +39,10 @@
     <string name="fragment_greeting">Hi there,
         welcome to Florish</string>
     <string name="firebase_url">https://flourish.firebaseio.com/</string>
+    <string name="consumer_key">9b480353f3852201a66e139cb5b3433c</string>
+    <string name="consumer_secret">8917364393087cf3312f15d750fd2e58</string>
+    <string name="token"></string>
+    <string name="token_secret"></string>
+
+
 </resources>
