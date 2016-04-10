@@ -43,6 +43,16 @@
     <string name="consumer_secret">8917364393087cf3312f15d750fd2e58</string>
     <string name="token"></string>
     <string name="token_secret"></string>
+    <string name="title_activity_landing_page">LandingPageActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_primary">PrimaryActivity</string>
 
 
 </resources>

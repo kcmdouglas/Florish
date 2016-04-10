@@ -20,7 +20,6 @@ public class MyGardenService {
     private String CONSUMER_KEY = mContext.getString(R.string.consumer_key);
     private String CONSUMER_SECRET = mContext.getString(R.string.consumer_secret);
     private String baseUrl = "http://api.mygarden.org";
-    private String signatureMethod = "HMAC-SHA1";
     private String requestTokenUrl =  baseUrl+"oauth/request_token";
     private String accessTokenUrl = baseUrl + "oauth/access_token";
     private String authorizeUrl = baseUrl + "/oauth/authorize";
