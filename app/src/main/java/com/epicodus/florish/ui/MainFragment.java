@@ -30,6 +30,9 @@ public class MainFragment extends Fragment {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private Context mContext;
+    private String mUserId;
+    private String mUsername;
+    private String mLocation;
 
 
     public static MainFragment newInstance() {
@@ -41,8 +44,12 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-//        mUserGreetingTextView.setText("Hello, ");
+//
+//        Bundle bundle = getArguments();
+//        mUserId = bundle.getString("userId");
+//        mUsername = bundle.getString("username");
+//        mLocation = bundle.getString("location");
+//        mUserGreetingTextView.setText("Hello, " + mUsername);
         mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
 
 

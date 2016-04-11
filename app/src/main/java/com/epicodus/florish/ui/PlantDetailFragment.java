@@ -47,13 +47,13 @@ public class PlantDetailFragment extends Fragment {
         mPlant = Parcels.unwrap(getArguments().getParcelable("plant"));
 
         mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
-
-        mSavePlantButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//
+//        mSavePlantButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     @Override

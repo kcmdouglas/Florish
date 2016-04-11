@@ -20,23 +20,63 @@ import android.view.MenuItem;
 
 import com.epicodus.florish.FlorishApplication;
 import com.epicodus.florish.R;
+import com.epicodus.florish.models.User;
 import com.firebase.client.AuthData;
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Firebase mFirebaseRef;
+    private User mCurrentUser = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primary);
 
+        mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
+
+//        if(mCurrentUser == null) {
+//
+//            Query queryRef = mFirebaseRef.child("/users" + mFirebaseRef.getAuth().getUid());
+//            queryRef.addChildEventListener(new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(DataSnapshot snapshot, String previousChild) {
+//                    mCurrentUser = snapshot.getValue(User.class);
+//                }
+//
+//                @Override
+//                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//                    mCurrentUser = dataSnapshot.getValue(User.class);
+//                }
+//
+//                @Override
+//                public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(FirebaseError firebaseError) {
+//
+//                }
+//            });
+//        }
+
         Class onCreateFragmentClass = MainFragment.class;
         Fragment onCreateFragment = null;
         try {
-           onCreateFragment = (Fragment) onCreateFragmentClass.newInstance();
+            onCreateFragment = (Fragment) onCreateFragmentClass.newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -61,8 +101,7 @@ public class NavigationActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
-        checkForAuthenticatedUser();
+        //checkForAuthenticatedUser();
 
 
     }
@@ -87,9 +126,10 @@ public class NavigationActivity extends AppCompatActivity
         Class fragmentClass = null;
 
         if (id == R.id.nav_camera) {
-           fragmentClass = MainFragment.class;
+            fragmentClass = MainFragment.class;
         } else if (id == R.id.nav_gallery) {
-
+            Intent intent = new Intent(NavigationActivity.this, SeasonalActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -100,14 +140,15 @@ public class NavigationActivity extends AppCompatActivity
 
         }
 
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (fragmentClass != null) {
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            inflateFragment(fragment, fragmentClass);
         }
-
-        inflateFragment(fragment, fragmentClass);
-
         item.setChecked(true);
         setTitle(item.getTitle());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -116,9 +157,16 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     public void inflateFragment(Fragment fragment, Class fragmentClass) {
-
+        if(mCurrentUser != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString("userId", mFirebaseRef.getAuth().getUid());
+            bundle.putString("username", mCurrentUser.getName());
+            bundle.putString("location", mCurrentUser.getLocation());
+            fragment.setArguments(bundle);
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.primaryActivityContent, fragment).commit();
+
     }
 
 

@@ -1,5 +1,6 @@
 package com.epicodus.florish.ui;
 
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -46,6 +47,7 @@ public class UserCreationFragment extends DialogFragment implements View.OnClick
     }
 
 
+    @SuppressLint("NewApi")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,7 +79,8 @@ public class UserCreationFragment extends DialogFragment implements View.OnClick
             String name = mUsernameEditText.getText().toString();
             String location = mZipcodeEditText.getText().toString();
             addToSharedPreferences(name, location);
-            createUser(name, mUserId);
+            User user = new User (name, location, mUserId);
+            mFirebaseRef.child("users/").push().setValue(user);
             dismiss();
         }
 
@@ -87,11 +90,5 @@ public class UserCreationFragment extends DialogFragment implements View.OnClick
         mEditor.putString("name", name).commit();
         mEditor.putString("location", location).commit();
     }
-
-    private void createUser(String name, String userId) {
-        User user = new User(name, userId);
-        mFirebaseRef.child("users/" + userId).push().setValue(user);
-    }
-
 
 }

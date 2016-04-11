@@ -1,5 +1,7 @@
 package com.epicodus.florish.models;
 
+import android.os.Parcelable;
+
 import org.parceler.Parcel;
 
 import java.util.ArrayList;
@@ -12,15 +14,16 @@ public class User {
     String name;
     ArrayList<Plant> plantsToStart;
     ArrayList<Plant> plantsInGarden;
-    String[] pollinators;
+    String location;
     String userId;
 
     public User() {
 
     }
 
-    public User(String name, String userId) {
+    public User(String name, String location, String userId) {
         this.name = name;
+        this.location= location;
         this.userId = userId;
     }
 
@@ -48,19 +51,19 @@ public class User {
         this.plantsInGarden = plantsInGarden;
     }
 
-    public String[] getPollinators() {
-        return pollinators;
-    }
-
-    public void setPollinators(String[] pollinators) {
-        this.pollinators = pollinators;
-    }
-
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
