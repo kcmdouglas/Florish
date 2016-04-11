@@ -21,7 +21,7 @@
         <activity android:name=".ui.UserPageActivity" />
         <activity android:name=".ui.PlantDetailActivity" />
         <activity
-            android:name=".ui.PrimaryActivity"
+            android:name=".ui.NavigationActivity"
             android:label="@string/title_activity_primary"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
