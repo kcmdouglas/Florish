@@ -33,6 +33,19 @@ public class NavigationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primary);
 
+        Class onCreateFragmentClass = MainFragment.class;
+        Fragment onCreateFragment = null;
+        try {
+           onCreateFragment = (Fragment) onCreateFragmentClass.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        inflateFragment(onCreateFragment, onCreateFragmentClass);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -50,6 +63,8 @@ public class NavigationActivity extends AppCompatActivity
 
         mFirebaseRef = FlorishApplication.getAppInstance().getFirebaseRef();
         checkForAuthenticatedUser();
+
+
     }
 
     @Override
