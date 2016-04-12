@@ -128,8 +128,7 @@ public class NavigationActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             fragmentClass = MainFragment.class;
         } else if (id == R.id.nav_gallery) {
-            Intent intent = new Intent(NavigationActivity.this, SeasonalActivity.class);
-            startActivity(intent);
+            fragmentClass = SearchFragment.class;
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
