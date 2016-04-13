@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainFragment">
@@ -30,18 +31,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/app_name"
-            android:id="@+id/title_text_view"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="80sp"
-            android:textColorHighlight="#fefefe"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Hello..."
             android:id="@+id/userGreetingTextView"
@@ -50,6 +39,77 @@
             android:layout_centerHorizontal="true"
             android:textSize="30sp" />
 
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/current_weather_image_view"
+            android:layout_marginTop="34dp"
+            android:layout_below="@+id/welcome_text_view"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Right now, it looks like the weather is a bit..."
+            android:id="@+id/current_weather_text_view"
+            android:layout_below="@+id/current_weather_image_view"
+            android:layout_centerHorizontal="true"
+            android:textSize="10dp"
+            android:background="#FFFFFF"
+            android:alpha=".4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="High 45 degrees || Low 39 degrees"
+            android:id="@+id/current_temperature_text_view"
+            android:textSize="15dp"
+            android:layout_below="@+id/current_weather_text_view"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="5dp"
+            android:background="#FFFFFF"
+            android:alpha=".4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Here are the plants you've added to your garden list:"
+            android:id="@+id/user_starter_list_text_view"
+            android:layout_marginTop="49dp"
+            android:textSize="15dp"
+            android:layout_below="@+id/current_weather_text_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#FFFFFF"
+            android:alpha=".4"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/starter_scroll_view"
+            android:layout_below="@+id/user_starter_list_text_view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#FFFFFF"
+            android:alpha=".4"/>
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/share_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share_white_24dp"
+            app:elevation="4dp"
+            app:fabSize="mini"
+            android:layout_below="@+id/starter_scroll_view"
+            android:layout_alignLeft="@+id/current_weather_image_view"
+            android:layout_alignStart="@+id/current_weather_image_view" />
     </RelativeLayout>
+
 
 </FrameLayout>
